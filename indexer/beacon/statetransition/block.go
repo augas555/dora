@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"fmt"
+	"lukechampine.com/blake3"
 	"time"
 
 	"github.com/ethpandaops/go-eth2-client/spec"
@@ -79,7 +80,7 @@ func (st *StateTransition) applyBlock(state *all.BeaconState, block *all.SignedB
 	proposerIndex := block.Message.ProposerIndex
 	parentRoot := block.Message.ParentRoot
 
-	bodyRoot, err := block.Message.Body.HashTreeRoot()
+	bodyRoot, err := s.dynSsz.HashTreeRoot(block.Message.Body)
 	if err != nil {
 		return fmt.Errorf("failed to get body root: %w", err)
 	}
@@ -193,6 +194,14 @@ func processRandao(s *stateAccessor, block *all.SignedBeaconBlock) {
 
 	epoch := s.currentEpoch()
 	idx := uint64(epoch) % s.specs.EpochsPerHistoricalVector
+
+	if reveal := block.Message.Body.HashChainReveal; block.Version == spec.DataVersionEip8321 && reveal != (phase0.Root{}) {
+		var input [64]byte
+		copy(input[:32], s.RANDAOMixes[idx][:])
+		copy(input[32:], reveal[:])
+		s.RANDAOMixes[idx] = blake3.Sum256(input[:])
+		return
+	}
 
 	// Mix in: XOR current mix with hash of the reveal
 	revealHash := sha256.Sum256(randaoReveal[:])

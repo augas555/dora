@@ -55,6 +55,8 @@ type ChainSpecConfig struct {
 	FuluForkEpoch        *uint64        `yaml:"FULU_FORK_EPOCH"        check-if-fork:"FuluForkEpoch"`
 	GloasForkVersion     phase0.Version `yaml:"GLOAS_FORK_VERSION"     check-if-fork:"GloasForkEpoch"`
 	GloasForkEpoch       *uint64        `yaml:"GLOAS_FORK_EPOCH"       check-if-fork:"GloasForkEpoch"`
+	Eip8321ForkVersion   phase0.Version `yaml:"EIP8321_FORK_VERSION" check-if-fork:"Eip8321ForkEpoch"`
+	Eip8321ForkEpoch     *uint64        `yaml:"EIP8321_FORK_EPOCH" check-if-fork:"Eip8321ForkEpoch"`
 	HezeForkVersion      phase0.Version `yaml:"HEZE_FORK_VERSION"      check-if-fork:"HezeForkEpoch"`
 	HezeForkEpoch        *uint64        `yaml:"HEZE_FORK_EPOCH"        check-if-fork:"HezeForkEpoch"`
 

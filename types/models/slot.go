@@ -62,6 +62,9 @@ type SlotPageBlockData struct {
 	StateRoot                   []byte                  `json:"stateroot" ssz-size:"32"`
 	BodyRoot                    []byte                  `json:"bodyroot" ssz-size:"32"`
 	Signature                   []byte                  `json:"signature" ssz-size:"96"`
+	Eip8321                     bool                    `json:"eip8321,omitempty"`
+	HashChainReveal             []byte                  `json:"hash_chain_reveal,omitempty"`
+	RandaoRegistrationCount     int                     `json:"randao_commitment_registration_count,omitempty"`
 	RandaoReveal                []byte                  `json:"randaoreveal" ssz-size:"96"`
 	Graffiti                    []byte                  `json:"graffiti"`
 	HasEth1Data                 bool                    `json:"has_eth1_data"`

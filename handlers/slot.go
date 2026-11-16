@@ -554,6 +554,11 @@ func getSlotPageBlockData(ctx context.Context, blockData *services.CombinedBlock
 		VoluntaryExitsCount:    uint64(len(voluntaryExits)),
 		SlashingsCount:         uint64(len(proposerSlashings)) + uint64(len(attesterSlashings)),
 	}
+	if body.Version == spec.DataVersionEip8321 {
+		pageData.Eip8321 = true
+		pageData.HashChainReveal = body.HashChainReveal[:]
+		pageData.RandaoRegistrationCount = len(body.RandaoCommitmentRegistrations)
+	}
 
 	if eth1Data != nil {
 		pageData.HasEth1Data = true
@@ -994,7 +999,7 @@ func getSlotPageBlockData(ctx context.Context, blockData *services.CombinedBlock
 			}
 		}
 
-		// EIP-7928 Block Access List — the chainservice sources the bytes
+		// EIP-7928 Block Access List â€” the chainservice sources the bytes
 		// either from the envelope (fresh from the node) or from blockdb
 		// (preserved after the node pruned it). Only the summary is part of the
 		// page; the entries are loaded lazily via /slot/{slotOrHash}/bal.
@@ -1043,7 +1048,7 @@ func getSlotPageBlockData(ctx context.Context, blockData *services.CombinedBlock
 		var requests *all.ExecutionRequests
 		if blockData.Block.Version >= spec.DataVersionGloas {
 			// In Gloas the execution requests carried by a payload are processed in the next
-			// block (as parent_execution_requests), so they are displayed there — consistent
+			// block (as parent_execution_requests), so they are displayed there â€” consistent
 			// with the deposits table and the slot/epoch deposit counts. The withdrawal sweep
 			// remains part of this block's own payload.
 			requests = body.ParentExecutionRequests

@@ -155,6 +155,16 @@
             <i class="fa fa-copy text-muted p-1" role="button" data-bs-toggle="tooltip" title="Copy to clipboard" data-clipboard-text="0x{{ printf "%x" .Block.RandaoReveal }}"></i>
           </div>
         </div>
+        {{ if .Block.Eip8321 }}
+        <div class="row border-bottom p-2 mx-0">
+          <div class="col-md-2">EIP-8321 hash reveal</div>
+          <div class="col-md-10 text-monospace text-break">0x{{ printf "%x" .Block.HashChainReveal }}</div>
+        </div>
+        <div class="row border-bottom p-2 mx-0">
+          <div class="col-md-2">RANDAO registrations</div>
+          <div class="col-md-10">{{ .Block.RandaoRegistrationCount }}</div>
+        </div>
+        {{ end }}
         <div class="row border-bottom p-2 mx-0">
           <div class="col-md-2"><span data-bs-toggle="tooltip" data-bs-placement="top" title="32 byte long message included by the block proposer">Graffiti:</span></div>
           <div class="col-md-10 d-flex justify-between flex-wrap">

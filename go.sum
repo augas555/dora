@@ -41,6 +41,8 @@ github.com/allegro/bigcache/v3 v3.2.0 h1:B45F9x3iaoBlhzIA+0jqxlThTUoyg+mOk7HUKSb
 github.com/allegro/bigcache/v3 v3.2.0/go.mod h1:qvxNn6cSKfWRmfDuPJbZcfxsQXEtoskUqPzT0kuHG5s=
 github.com/andybalholm/brotli v1.2.6 h1:ftYnfj6usCp+UGV5kSJ3+chpMQgU+gJf/AxsUQ52REI=
 github.com/andybalholm/brotli v1.2.6/go.mod h1:rzTDkvFWvIrjDXZHkuS16NPggd91W3kUSvPlQ1pLaKY=
+github.com/augas555/go-eth2-client v0.0.0-20261116183224-34185d9ed2f5 h1:85xyps/CsFY2AZD0HiZUczQNFvCtE6X/OEwdro7zdVI=
+github.com/augas555/go-eth2-client v0.0.0-20261116183224-34185d9ed2f5/go.mod h1:sIVbaug0GsltsJS+hj8ID4dmWBIt8TXoNIesvuBCGt0=
 github.com/benbjohnson/clock v1.3.5 h1:VvXlSJBzZpA/zum6Sj74hxwYI2DIxRWuNIoXAzHZz5o=
 github.com/benbjohnson/clock v1.3.5/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
